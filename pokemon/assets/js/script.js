@@ -64,9 +64,7 @@ function getPokemon() {
     .then((unPokemon) => {
         let infoReduites = document.querySelector('#infoReduites');
         //Nuke l'intérieur de la div
-        infoReduites.innerHTML = "";
-
-        if (infoReduites.innerHTML == "") {
+            infoReduites.innerHTML = "";
             let texteTitre = document.createElement('span');
             texteTitre.textContent = 'Voici les informations connues de ' + select + ' : ';
             infoReduites.appendChild(texteTitre);
@@ -94,19 +92,50 @@ function getPokemon() {
                 imgType.setAttribute("class", 'type')
                 typeDiv.appendChild(imgType);
             }
-            getEvoPoke(select, unPokemon); 
-        }
+            getEvoPoke (select, unPokemon);
+
+            //Détails poké
+            
+            let monBouton = document.querySelector('#bouton');
+            monBouton.addEventListener('click', () => {
+            console.log('clicked');
+            // console.log(querySelector(".detailsPoke"));
+            if (querySelector(".detailsPoke") !== undefined) {
+                
+            }
+            let pokeDetailDiv = document.createElement('div');
+            pokeDetailDiv.setAttribute('class', 'detailsPoke');
+            infoReduites.appendChild(pokeDetailDiv);
+            
+            pokeDetailDiv.innerHTML == ""
+
+            const health = unPokemon.stats.HP;
+            const attack = unPokemon.stats.attack;
+            const defense = unPokemon.stats.defense;
+            const specialAttack = unPokemon.stats.special_attack;
+            const specialDefense = unPokemon.stats.special_defense;
+            const speed = unPokemon.stats.speed;
+            let statsTab = []
+            let statsNametab = ['HP : ', 'Attaque : ', 'Defense : ', 'Attaque Spé : ', 'Défense Spé : ', 'Vitesse : ']
+            statsTab.push(health);
+            statsTab.push(attack);
+            statsTab.push(defense);
+            statsTab.push(specialAttack);
+            statsTab.push(specialDefense);
+            statsTab.push(speed);
+
+            for (let kappa = 0; kappa < statsTab.length; kappa++) {
+                console.log(statsTab[kappa]);
+                let ligneStat = document.createElement('span');
+                ligneStat.textContent = statsNametab[kappa] + statsTab[kappa] + ' ';
+                pokeDetailDiv.appendChild(ligneStat);
+            };
+
+            console.log('topkekfini')
+            });
     });
 }
 
-let monBouton = document.querySelector('id', 'bouton');
-monBouton.addEventListener('click', () => {
-    console.log('clicked')
-    let pokeDetailDiv = document.createElement('div');
-    pokeDetailDiv.setAttribute('class', 'detailsPoke')
-    infoReduites.appendChild(pokeDetailDiv);
-    pokeDetailDiv.textContent= 'topkek'
-});
 
 
 

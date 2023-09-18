@@ -1,6 +1,15 @@
+@font-face {
+    font-family: 'Pokemon Solid Normal';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Pokemon Solid Normal'), url('../fonts/Pokemon_Solid.woff') format('woff');
+}
+
 body {
     background-image: url(https://free4kwallpapers.com/uploads/originals/2018/06/18/created-a-3d-render-of-a-pokemon-trophy-in-the-grass-wallpaper.jpg);
     background-size: 100%;
+    font-family: 'Pokemon Solid Normal';
+    font-size: 18px;
 }
 
 .wrapper {
@@ -18,11 +27,6 @@ body {
 
 #topkek {
     margin: 5%;
-}
-
-span {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 16px;
 }
 
 #infoReduites {
