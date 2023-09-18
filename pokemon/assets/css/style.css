@@ -1,0 +1,44 @@
+body {
+    background-image: url(https://free4kwallpapers.com/uploads/originals/2018/06/18/created-a-3d-render-of-a-pokemon-trophy-in-the-grass-wallpaper.jpg);
+    background-size: 100%;
+}
+
+.wrapper {
+    margin-left: 15%;
+    margin-right: 15%;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 1%;
+    background-color: rgba(250, 242, 228, 0.815);
+    box-shadow: 15px 15px 15px rgb(63, 47, 55);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#topkek {
+    margin: 5%;
+}
+
+span {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+}
+
+#infoReduites {
+    margin: 10px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pokePrincipal {
+    width: 350px;
+}
+
+.evo {
+    width: 200px;
+}
+
+.type {
+    width: 150px;
+}
