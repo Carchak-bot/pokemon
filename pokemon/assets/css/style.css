@@ -6,10 +6,11 @@
 }
 
 body {
-    background-image: url(https://free4kwallpapers.com/uploads/originals/2018/06/18/created-a-3d-render-of-a-pokemon-trophy-in-the-grass-wallpaper.jpg);
+    background: url(https://free4kwallpapers.com/uploads/originals/2018/06/18/created-a-3d-render-of-a-pokemon-trophy-in-the-grass-wallpaper.jpg) no-repeat fixed;
     background-size: 100%;
     font-family: 'Pokemon Solid Normal';
-    font-size: 18px;
+    font-size: 22px;
+    letter-spacing: 3px;
 }
 
 .wrapper {
@@ -18,15 +19,27 @@ body {
     border: 1px solid black;
     border-radius: 20px;
     padding: 1%;
-    background-color: rgba(250, 242, 228, 0.815);
+    background-color: rgba(250, 242, 228, 0.500);
+    backdrop-filter: blur(10px); /* Applique un flou au fond */
     box-shadow: 15px 15px 15px rgb(63, 47, 55);
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 #topkek {
     margin: 5%;
+}
+
+#poke-select {
+    border: 2px black solid;
+    height: 60px;
+    border-radius: 20px;
+    background-color: rgba(250, 242, 228, 0.500);
+    font-family: 'Pokemon Solid Normal';
+    font-size: 22px;
+    letter-spacing: 3px;
 }
 
 #infoReduites {
@@ -45,4 +58,24 @@ body {
 
 .type {
     width: 150px;
+}
+
+#bouton {
+    border: 2px black solid;
+    height: 60px;
+    border-radius: 20px;
+    background-color: rgba(250, 242, 228, 0.500);
+    font-family: 'Pokemon Solid Normal';
+    font-size: 22px;
+    letter-spacing: 3px;
+}
+
+#detailsPoke {
+    display: flex;
+    flex-direction: column;
+    border: 2px black solid;
+    margin: 5px;
+    padding: 15px;
+    box-shadow: 5px 5px 5px rgb(63, 47, 55);
+    border-radius: 10px;
 }

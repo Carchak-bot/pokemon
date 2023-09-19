@@ -92,7 +92,8 @@ function getPokemon() {
                 imgType.setAttribute("class", 'type')
                 typeDiv.appendChild(imgType);
             }
-            getEvoPoke (select, unPokemon);
+            const pokeDetailDiv = document.querySelector('#detailsPoke');
+            pokeDetailDiv.innerHTML = "";
 
             //Détails poké
             
@@ -100,39 +101,31 @@ function getPokemon() {
             monBouton.addEventListener('click', () => {
             console.log('clicked');
             // console.log(querySelector(".detailsPoke"));
-            if (querySelector(".detailsPoke") !== undefined) {
-                
-            }
-            let pokeDetailDiv = document.createElement('div');
-            pokeDetailDiv.setAttribute('class', 'detailsPoke');
-            infoReduites.appendChild(pokeDetailDiv);
-            
-            pokeDetailDiv.innerHTML == ""
-
-            const health = unPokemon.stats.HP;
-            const attack = unPokemon.stats.attack;
-            const defense = unPokemon.stats.defense;
-            const specialAttack = unPokemon.stats.special_attack;
-            const specialDefense = unPokemon.stats.special_defense;
-            const speed = unPokemon.stats.speed;
-            let statsTab = []
-            let statsNametab = ['HP : ', 'Attaque : ', 'Defense : ', 'Attaque Spé : ', 'Défense Spé : ', 'Vitesse : ']
-            statsTab.push(health);
-            statsTab.push(attack);
-            statsTab.push(defense);
-            statsTab.push(specialAttack);
-            statsTab.push(specialDefense);
-            statsTab.push(speed);
-
-            for (let kappa = 0; kappa < statsTab.length; kappa++) {
-                console.log(statsTab[kappa]);
-                let ligneStat = document.createElement('span');
-                ligneStat.textContent = statsNametab[kappa] + statsTab[kappa] + ' ';
-                pokeDetailDiv.appendChild(ligneStat);
-            };
-
-            console.log('topkekfini')
+                pokeDetailDiv.innerHTML = "";
+                const health = unPokemon.stats.HP;
+                const attack = unPokemon.stats.attack;
+                const defense = unPokemon.stats.defense;
+                const specialAttack = unPokemon.stats.special_attack;
+                const specialDefense = unPokemon.stats.special_defense;
+                const speed = unPokemon.stats.speed;
+                let statsTab = []
+                let statsNametab = ['HP : ', 'Attaque : ', 'Defense : ', 'Attaque Spé : ', 'Défense Spé : ', 'Vitesse : ']
+                statsTab.push(health);
+                statsTab.push(attack);
+                statsTab.push(defense);
+                statsTab.push(specialAttack);
+                statsTab.push(specialDefense);
+                statsTab.push(speed);
+                for (let kappa = 0; kappa < statsTab.length; kappa++) {
+                    console.log(statsTab[kappa]);
+                    let ligneStat = document.createElement('span');
+                    ligneStat.textContent = statsNametab[kappa] + statsTab[kappa] + ' ';
+                    pokeDetailDiv.appendChild(ligneStat);
+                };
+                statsTab = [];
+                console.log('topkekfini')
             });
+            getEvoPoke (select, unPokemon);
     });
 }
 
@@ -144,3 +137,63 @@ function getPokemon() {
 //let monFormulaire = document.forms["formPokeSelect"];
     //monFormulaire.addEventListener("submit", getValues); 
     // Remarquez que l'on n'envoie rien et que l'on appelle la fonction sans les parenthèses
+/*
+    function getPokemon(url, param, idPokemon) {
+
+        const selectedPokemonIndex = parseInt(idPokemon); // Récupérez l'indice du Pokémon sélectionné
+        console.log("bouton JS : ");
+        if (!isNaN(selectedPokemonIndex)) {
+          localStorage.setItem("selection", selectedPokemonIndex);
+          // Effectuer une nouvelle requête API pour obtenir les détails du Pokémon sélectionné
+          fetch(url,param)
+            .then((response) => response.json()) // Convertir la réponse en JSON
+            .then((selectedPokemon) => {
+              console.log(selectedPokemon.name);
+              resultatElement.innerHTML = `
+                <h2>Voici les informations de ${selectedPokemon.name}</h2>
+                <img src="${selectedPokemon.image}" alt="Image Pokemon">
+                <p>Élément : ${selectedPokemon.apiTypes
+                  .map((type) => type.name)
+                  .join(", ")}</p>
+                ${selectedPokemon.apiEvolutions &&
+                  selectedPokemon.apiEvolutions.length > 0
+                  ? `<p>Évolution : ${selectedPokemon.apiEvolutions
+                    .map((evolution) => evolution.name)
+                    .join(", ")}</p>`
+                  : "<p>Aucune évolution.</p>"
+                }
+                  <button type="submit" name="caract"><a href="./caracteristique.html">Caractéristique</a></button>
+              `;
+            })
+            .catch((error) => {
+              console.log("Erreur lors de la requête API : " + error); // Gérez les erreurs
+            });
+        } else {
+          console.log("Sélection de Pokémon invalide.");
+        }
+      }
+      
+      document.forms[0].addEventListener("submit", (eventDetails) => {
+        eventDetails.preventDefault();
+        let fetchTarget = "";
+        const idPokemon = document.querySelector("select").value
+        if (eventDetails.submitter.getAttribute("name") == "pokemon-js") {
+          console.log("JAVASCRIPT");
+          const param = {};
+          fetchTarget = apiUrl + idPokemon;
+          getPokemon(fetchTarget, param, idPokemon);
+        } else {
+          console.log("PHP");
+          const param = {
+            method: "POST",
+              body: document.querySelector("select").value,
+              headers: {
+                  "Content-Type": "application/text"
+              }
+          };
+          fetchTarget = "./php/data.php";
+          getPokemon(fetchTarget, param, idPokemon);
+        }
+      })
+
+      */

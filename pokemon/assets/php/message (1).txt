@@ -1,0 +1,59 @@
+```js
+function getPokemon(url, param, idPokemon) {
+
+  const selectedPokemonIndex = parseInt(idPokemon); // Récupérez l'indice du Pokémon sélectionné
+  console.log("bouton JS : ");
+  if (!isNaN(selectedPokemonIndex)) {
+    localStorage.setItem("selection", selectedPokemonIndex);
+    // Effectuer une nouvelle requête API pour obtenir les détails du Pokémon sélectionné
+    fetch(url,param)
+      .then((response) => response.json()) // Convertir la réponse en JSON
+      .then((selectedPokemon) => {
+        console.log(selectedPokemon.name);
+        resultatElement.innerHTML = `
+          <h2>Voici les informations de ${selectedPokemon.name}</h2>
+          <img src="${selectedPokemon.image}" alt="Image Pokemon">
+          <p>Élément : ${selectedPokemon.apiTypes
+            .map((type) => type.name)
+            .join(", ")}</p>
+          ${selectedPokemon.apiEvolutions &&
+            selectedPokemon.apiEvolutions.length > 0
+            ? `<p>Évolution : ${selectedPokemon.apiEvolutions
+              .map((evolution) => evolution.name)
+              .join(", ")}</p>`
+            : "<p>Aucune évolution.</p>"
+          }
+            <button type="submit" name="caract"><a href="./caracteristique.html">Caractéristique</a></button>
+        `;
+      })
+      .catch((error) => {
+        console.log("Erreur lors de la requête API : " + error); // Gérez les erreurs
+      });
+  } else {
+    console.log("Sélection de Pokémon invalide.");
+  }
+}
+
+document.forms[0].addEventListener("submit", (eventDetails) => {
+  eventDetails.preventDefault();
+  let fetchTarget = "";
+  const idPokemon = document.querySelector("select").value
+  if (eventDetails.submitter.getAttribute("name") == "pokemon-js") {
+    console.log("JAVASCRIPT");
+    const param = {};
+    fetchTarget = apiUrl + idPokemon;
+    getPokemon(fetchTarget, param, idPokemon);
+  } else {
+    console.log("PHP");
+    const param = {
+      method: "POST",
+        body: document.querySelector("select").value,
+        headers: {
+            "Content-Type": "application/text"
+        }
+    };
+    fetchTarget = "./php/data.php";
+    getPokemon(fetchTarget, param, idPokemon);
+  }
+})
+```js
